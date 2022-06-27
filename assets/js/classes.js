@@ -104,8 +104,9 @@ class Fighter extends Sprite {
         this.position.x += this.velocity.x;
         this.position.y += this.velocity.y;
 
+        // gravidade
         this.position.y + this.height + this.velocity.y >= canvas.height - 96
-            ? (this.velocity.y = 0) // se Sprite no chão vy = 0, senão acelera g
+            ? ((this.velocity.y = 0), (this.position.y = 330)) // se Sprite no chão vy = 0, senão acelera g
             : (this.velocity.y += gravity);
     }
 
@@ -136,6 +137,13 @@ class Fighter extends Sprite {
                 if (this.image !== this.sprites.jump.image) {
                     this.image = this.sprites.jump.image;
                     this.framesMax = this.sprites.jump.framesMax;
+                    this.framesCurrent = 0;
+                }
+                break;
+            case 'fall':
+                if (this.image !== this.sprites.fall.image) {
+                    this.image = this.sprites.fall.image;
+                    this.framesMax = this.sprites.fall.framesMax;
                     this.framesCurrent = 0;
                 }
                 break;
