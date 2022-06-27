@@ -123,12 +123,25 @@ class Fighter extends Sprite {
     attack() {
         this.switchSprite('attack1');
         this.isAttacking = true;
-        setTimeout(() => {
-            this.isAttacking = false;
-        }, 1000);
+        // setTimeout(() => {
+        //     this.isAttacking = false;
+        // }, 1000);
+    }
+
+    takeHit() {
+        this.switchSprite('takehit');
+        this.health -= 20;
     }
 
     switchSprite(sprite) {
+        // overriding todas as animações com a animação de TOMAR HIT
+        if (
+            this.image === this.sprites.takehit.image &&
+            this.framesCurrent < this.sprites.takehit.framesMax - 1
+        )
+            return;
+
+        // overriding todas as animações com a animação de ataque
         if (
             this.image === this.sprites.attack1.image &&
             this.framesCurrent < this.sprites.attack1.framesMax - 1
@@ -172,6 +185,14 @@ class Fighter extends Sprite {
                 if (this.image !== this.sprites.attack1.image) {
                     this.image = this.sprites.attack1.image;
                     this.framesMax = this.sprites.attack1.framesMax;
+                    this.framesCurrent = 0;
+                }
+                break;
+
+            case 'takehit':
+                if (this.image !== this.sprites.takehit.image) {
+                    this.image = this.sprites.takehit.image;
+                    this.framesMax = this.sprites.takehit.framesMax;
                     this.framesCurrent = 0;
                 }
                 break;
