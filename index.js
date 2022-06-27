@@ -29,9 +29,12 @@ const shop = new Sprite({
 const player = new Fighter({
     position: { x: 200, y: 0 },
     velocity: { x: 0, y: 0 },
+    imageSrc: './assets/images/samuraiMack/Idle.png',
+    framesMax: 8,
+    scale: 2.5,
     offset: {
-        x: 0,
-        y: 0,
+        x: 215,
+        y: 157,
     },
 });
 
@@ -78,7 +81,7 @@ function animate() {
     background.update();
     shop.update();
     player.update();
-    enemy.update();
+    // enemy.update();
 
     player.velocity.x = 0;
     enemy.velocity.x = 0;
