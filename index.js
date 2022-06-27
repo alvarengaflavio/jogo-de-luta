@@ -36,6 +36,16 @@ const player = new Fighter({
         x: 215,
         y: 157,
     },
+    sprites: {
+        idle: {
+            imageSrc: './assets/images/samuraiMack/Idle.png',
+            framesMax: 8,
+        },
+        run: {
+            imageSrc: './assets/images/samuraiMack/Run.png',
+            framesMax: 8,
+        },
+    },
 });
 
 const enemy = new Fighter({
