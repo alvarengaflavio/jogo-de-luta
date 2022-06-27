@@ -86,7 +86,7 @@ class Fighter extends Sprite {
         this.health = 100;
         this.framesCurrent = 0;
         this.framesElapsed = 0;
-        this.framesHold = 20;
+        this.framesHold = 10;
         this.sprites = sprites;
 
         for (const sprite in this.sprites) {
@@ -99,8 +99,9 @@ class Fighter extends Sprite {
         this.draw();
         this.animateFrames();
 
+        // Attack BOXES
         this.attackBox.position.x = this.position.x + this.attackBox.offset.x;
-        this.attackBox.position.y = this.position.y;
+        this.attackBox.position.y = this.position.y + this.attackBox.offset.y;
 
         this.position.x += this.velocity.x;
         this.position.y += this.velocity.y;
@@ -124,7 +125,7 @@ class Fighter extends Sprite {
         this.isAttacking = true;
         setTimeout(() => {
             this.isAttacking = false;
-        }, 100);
+        }, 1000);
     }
 
     switchSprite(sprite) {
