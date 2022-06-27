@@ -106,13 +106,13 @@ class Fighter extends Sprite {
         this.position.x += this.velocity.x;
         this.position.y += this.velocity.y;
 
-        // draws hitbox
-        ctx.fillRect(
-            this.attackBox.position.x,
-            this.attackBox.position.y,
-            this.attackBox.width,
-            this.attackBox.height,
-        );
+        // draws HITBOXES
+        // ctx.fillRect(
+        //     this.attackBox.position.x,
+        //     this.attackBox.position.y,
+        //     this.attackBox.width,
+        //     this.attackBox.height,
+        // );
 
         // gravidade
         this.position.y + this.height + this.velocity.y >= canvas.height - 96
