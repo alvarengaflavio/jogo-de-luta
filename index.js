@@ -164,6 +164,9 @@ function animate() {
     ctx.fillRect(0, 0, canvas.width, canvas.height);
     background.update();
     shop.update();
+    //Adiciona uma camada de branco para aumentar contraste entre jogadores e BG
+    ctx.fillStyle = 'rgba(255, 255, 255, 0.1)';
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
     player.update();
     enemy.update();
 
@@ -213,7 +216,9 @@ function animate() {
         enemy.takeHit();
         player.isAttacking = false;
 
-        document.querySelector('#enemyHealth').style.width = enemy.health + '%';
+        gsap.to('#enemyHealth', {
+            width: enemy.health + '%',
+        });
     }
 
     if (
@@ -223,8 +228,10 @@ function animate() {
     ) {
         player.takeHit();
         enemy.isAttacking = false;
-        document.querySelector('#playerHealth').style.width =
-            player.health + '%';
+
+        gsap.to('#playerHealth', {
+            width: player.health + '%',
+        });
     }
     // SE JOGADOR ERRAR
     if (player.isAttacking && player.framesCurrent === 4) {
