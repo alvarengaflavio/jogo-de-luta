@@ -129,11 +129,16 @@ class Fighter extends Sprite {
     }
 
     takeHit() {
-        this.switchSprite('takehit');
         this.health -= 20;
+        this.health <= 0
+            ? this.switchSprite('death')
+            : this.switchSprite('takehit');
     }
 
     switchSprite(sprite) {
+        // MORREU
+        if (this.image === this.sprites.death.image) return;
+
         // overriding todas as animações com a animação de TOMAR HIT
         if (
             this.image === this.sprites.takehit.image &&
@@ -193,6 +198,14 @@ class Fighter extends Sprite {
                 if (this.image !== this.sprites.takehit.image) {
                     this.image = this.sprites.takehit.image;
                     this.framesMax = this.sprites.takehit.framesMax;
+                    this.framesCurrent = 0;
+                }
+                break;
+
+            case 'death':
+                if (this.image !== this.sprites.death.image) {
+                    this.image = this.sprites.death.image;
+                    this.framesMax = this.sprites.death.framesMax;
                     this.framesCurrent = 0;
                 }
                 break;
