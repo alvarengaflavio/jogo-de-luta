@@ -203,7 +203,7 @@ function animate() {
     // PULANDO
     if (enemy.velocity.y < 0) {
         enemy.switchSprite('jump');
-    } else if (player.velocity.y > 0) {
+    } else if (enemy.velocity.y > 0) {
         enemy.switchSprite('fall');
     }
 
