@@ -244,44 +244,50 @@ function animate() {
 animate();
 
 window.addEventListener('keydown', event => {
-    switch (event.key) {
-        case 'd':
-            keys.d.pressed = true;
-            player.lastKey = 'd';
-            break;
+    if (!player.dead) {
+        switch (event.key) {
+            case 'd':
+                keys.d.pressed = true;
+                player.lastKey = 'd';
+                break;
 
-        case 'a':
-            keys.a.pressed = true;
-            player.lastKey = 'a';
-            break;
-        case 'w':
-            keys.w.pressed = true;
-            player.velocity.y = -20;
-            break;
+            case 'a':
+                keys.a.pressed = true;
+                player.lastKey = 'a';
+                break;
+            case 'w':
+                keys.w.pressed = true;
+                player.velocity.y = -20;
+                break;
 
-        case ' ':
-            player.attack();
-            break;
+            case ' ':
+                player.attack();
+                break;
+        }
+    }
 
-        case 'ArrowRight':
-            keys.ArrowRight.pressed = true;
-            enemy.lastKey = 'ArrowRight';
-            break;
+    if (!enemy.dead) {
+        switch (event.key) {
+            case 'ArrowRight':
+                keys.ArrowRight.pressed = true;
+                enemy.lastKey = 'ArrowRight';
+                break;
 
-        case 'ArrowLeft':
-            keys.ArrowLeft.pressed = true;
-            enemy.lastKey = 'ArrowLeft';
-            break;
-        case 'ArrowUp':
-            keys.ArrowUp.pressed = true;
-            enemy.velocity.y = -20;
-            break;
-        case 'ArrowDown':
-            enemy.attack();
-            break;
+            case 'ArrowLeft':
+                keys.ArrowLeft.pressed = true;
+                enemy.lastKey = 'ArrowLeft';
+                break;
+            case 'ArrowUp':
+                keys.ArrowUp.pressed = true;
+                enemy.velocity.y = -20;
+                break;
+            case 'ArrowDown':
+                enemy.attack();
+                break;
 
-        default:
-            break;
+            default:
+                break;
+        }
     }
     // console.log(event.key);
 });
